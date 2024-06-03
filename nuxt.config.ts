@@ -1,40 +1,32 @@
-import { internalIpV4Sync } from 'internal-ip'
-
 export default defineNuxtConfig({
   ssr: false,
 
-  typescript: { shim: false },
+  devtools: { enabled: false },
 
-  devServer: {
-    host: '0.0.0.0',
-    port: 5173,
-  },
+  devServer: { host: "0.0.0.0", port: 3000 },
 
   vite: {
     clearScreen: false,
     server: {
       strictPort: true,
       hmr: {
-        protocol: 'ws',
-        host: internalIpV4Sync(),
+        protocol: "ws",
+        host: "0.0.0.0",
         port: 5183,
       },
     },
-    envPrefix: ['VITE_', 'TAURI_'],
-    build: {
-      target: ['es2021', 'chrome100', 'safari13'],
-      minify: !process.env.TAURI_DEBUG ? 'esbuild' : false,
-      sourcemap: !!process.env.TAURI_DEBUG,
-    },
+    envPrefix: ["VITE_", "TAURI_"],
   },
 
-  css: ['@unocss/reset/tailwind.css'],
+  nitro: { output: { publicDir: "dist" } },
 
   modules: [
-    'nuxt-icon',
-    '@unocss/nuxt',
-    '@vueuse/nuxt',
+    "@nuxt/eslint",
+    "@vueuse/nuxt",
+    "@nuxtjs/tailwindcss",
   ],
 
-  sourcemap: false,
+  eslint: { config: { standalone: false } },
+
+  tailwindcss: { viewer: false },
 })

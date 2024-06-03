@@ -1,11 +1,12 @@
 {
   "recommendations": [
     "Vue.volar",
+    "antfu.file-nesting",
     "rust-lang.rust-analyzer",
     "tauri-apps.tauri-vscode",
-    "antfu.unocss",
+    "tamasfe.even-better-toml",
     "dbaeumer.vscode-eslint",
     "EditorConfig.EditorConfig",
-    "antfu.file-nesting",
+    "bradlc.vscode-tailwindcss"
   ]
 }
